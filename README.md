@@ -15,10 +15,14 @@ Software: PostgreSQL and pgAdmin
 
 ## Results: 
 Provide a bulleted list with four major points from the two analysis deliverables. Use images as support where needed.
+
 First analysis:
+
 * Confirming the number of retirement-age employees, who is current working at company.
 * Identify the most recent title of retiring people, this can help company know how to plan the people in  mentorship program.
+
 Second analysis:
+
 * Confirming the number of retiring people who is mentorship-eligibility by their birthday.
 * Preparing to clearfy the title of mentorship-eligibility people for further needs.
 
