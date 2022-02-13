@@ -41,18 +41,29 @@ The ratio of new comers and mentorship_eligibilty employees is around 8:1 now, t
 Also, we can check the eligible people with departments, to confirm the program details.
 
 Current employees in each department as show below:
+
 <img width="97" alt="department_breakdown" src="https://user-images.githubusercontent.com/95401877/153740518-925cb643-da91-4eeb-a511-fe4f84a800f7.png">
 
 Eligible for mentorship employees in each department as show below:
+
 SELECT COUNT(me.emp_no), de.dept_no, d.dept_name
+
 INTO mentorship_eligibilty_department_breakdown
+
 FROM mentorship_eligibilty as me
+
 LEFT JOIN dept_emp as de
+
 ON me.emp_no = de.emp_no
+
 LEFT JOIN departments as d
+
 ON de.dept_no = d.dept_no
+
 GROUP BY de.dept_no, d.dept_no
+
 ORDER BY de.dept_no;
+
 SELECT * FROM mentorship_eligibilty_department_breakdown;
 
 <img width="198" alt="mentorship_eligibilty_department_breakdown" src="https://user-images.githubusercontent.com/95401877/153740468-0a351eb3-8643-4861-b1e3-98681020a036.png">
@@ -60,28 +71,47 @@ SELECT * FROM mentorship_eligibilty_department_breakdown;
 To make the program works, we can get a bigger extent, such as include employees who was born in 1964. Now, we have enough qualitied.
 
 SELECT DISTINCT ON (e.emp_no) e.emp_no,
+
         e.first_name,
+	
         e.last_name,
+	
         e.birth_date,
-		    de.from_date,
+	
+	de.from_date,
+	
         de.to_date,
-		    tl.title
+	
+	tl.title
+	
 INTO mentorship_eligibilty_extension
+
 FROM employees AS e
+
 INNER JOIN dept_emp AS de
+
 ON (e.emp_no = de.emp_no)
+
 INNER JOIN titles AS tl
+
 ON (e.emp_no = tl.emp_no)
+
 WHERE de.to_date = ('9999-01-01')
+
 AND (e.birth_date BETWEEN '1964-01-01' AND '1964-12-31')
+
 ORDER BY emp_no
 
 select * from mentorship_eligibilty_extension
 
 SELECT COUNT(mee.title),mee.title
+
 INTO mentorship_eligibilty_extension_count
+
 FROM mentorship_eligibilty_extension AS mee
+
 GROUP BY mee.title
+
 ORDER BY count(mee.title) DESC
 
 SELECT * FROM mentorship_eligibilty_extension_count
